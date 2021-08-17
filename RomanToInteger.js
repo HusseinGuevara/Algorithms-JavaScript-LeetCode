@@ -14,6 +14,15 @@ const expected1 = 3;
 const nums2 = "IV"
 const expected2 = 4;
 
+const nums3 = "IX"
+const expected3 = 9;
+
+const nums4 = "LVIII" 
+const expected4 = 58;
+
+const nums5 = "MCMXCIV"
+const expected5 = 1994;
+
 var romanToInt = function(nums) {
     var map = new Map();
     
@@ -26,23 +35,28 @@ var romanToInt = function(nums) {
     map.set("M", 1000);
 
     // EDGE CASE 
-    if(nums.length == 1) {
+    if(nums.length === 1) {
         return map.get(nums[0])
     }
 
     // Store last value and comapre to see if smaller or greater
     var sum = map.get(nums[nums.length - 1]);
-    var currentPointer = map.get(nums[nums - 2]);
+    var currentPointer = nums.length - 2;
+    
     for(; currentPointer >= 0; currentPointer--) {
+        // console.log(currentPointer);
         if(map.get(nums[currentPointer + 1]) > map.get(nums[currentPointer])) {
             sum -= map.get(nums[currentPointer]);
         } else {
             sum += map.get(nums[currentPointer]);
         }
-    }    
+    }   
     return sum;
 }
 console.log(romanToInt(nums1));
-romanToInt(nums2);
+console.log(romanToInt(nums2));
+console.log(romanToInt(nums3));
+console.log(romanToInt(nums4));
+console.log(romanToInt(nums5));
 
 
