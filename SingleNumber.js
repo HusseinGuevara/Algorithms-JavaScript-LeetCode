@@ -11,18 +11,23 @@ const expected2 = 4
 const nums3 = [1]
 const expected3 = 1
 
-var singleNumber = function(nums) {
-    var firstIdx = 0;
-    var secondIdx = firstIdx + 1;
-    
-    // EDGE CASE
-    if(nums.lenght === 1) {
-        return nums[0];
+const nums4 = [-1, -1, -2]
+const expected4 = -2
+
+var singleNumber = function (nums) {
+    let dictionary = {};
+    for (let i = 0; i < nums.length; i++) {
+        if (nums[i] in dictionary) {
+        delete dictionary[nums[i]];
+        } else dictionary[nums[i]] = 1;
     }
-    
-    for(; secondIdx < nums.lenght; secondIdx++) {
-        console.log(nums[firstIdx]);
-        console.log(nums[secondIdx]);
-    }
+    return Object.keys(dictionary)[0];
 };
-singleNumber(nums1);
+
+console.log(singleNumber(nums1));
+console.log(singleNumber(nums2));
+console.log(singleNumber(nums3));
+console.log(singleNumber(nums4));
+
+
+
