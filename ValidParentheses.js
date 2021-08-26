@@ -22,8 +22,9 @@ var validParentheses = function(str) {
     var stack = [];
 
     for(var idx of str) {
-        object[str[str.length - 1]] === idx ? stack.pop() : stack.push(idx);
-    }
+        object[stack[stack.length - 1]] === idx ? stack.pop() : stack.push(idx);
+        console.log(stack)
+    }   
     return stack.length === 0 ? true : false;
 }
 console.log(validParentheses(str1));
